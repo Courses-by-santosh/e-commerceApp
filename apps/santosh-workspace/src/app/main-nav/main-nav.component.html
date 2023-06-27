@@ -9,9 +9,12 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+       <a mat-list-item [routerLink]="['product']">All Products</a>
       <ng-container *ngFor="let cat of categories$ | async">
-        <a mat-list-item [routerLink]="['category', cat]">{{ cat }}</a>
+        <a mat-list-item [routerLink]="['product', cat]">{{ cat }}</a>
       </ng-container>
+       <a mat-list-item [routerLink]="['cart']">View Cart</a>
+        <a mat-list-item [routerLink]="['orders']">View Orders</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
