@@ -17,18 +17,24 @@ import {
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  @Input() categoryName: string = '';
+  @Input() set categoryName(name: string) {
+    if (name) {
+      this.store.dispatch(
+        productActions.loadProductByCategory({ category: name })
+      );
+    } else {
+      this.store.dispatch(productActions.loadProduct());
+    }
+  }
 
   @Input() animation: any;
 
-  products$ = this.categoryName
-    ? this.store.select(selectProductsByCategory(this.categoryName))
-    : this.store.select(selectProducts);
+  products$ = this.store.select(selectProducts);
 
   constructor(private readonly store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(productActions.loadProduct());
+    // this.store.dispatch(productActions.loadProduct());
   }
 }
 

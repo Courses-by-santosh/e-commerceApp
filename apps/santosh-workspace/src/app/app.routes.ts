@@ -6,6 +6,7 @@ import {
   loadProducts,
   loadProductsByCategory,
 } from '@org/product';
+import { loadCart, cartFeature } from '@org/cart';
 
 export const appRoutes: Route[] = [
   {
@@ -16,10 +17,7 @@ export const appRoutes: Route[] = [
   {
     path: 'product',
     loadComponent: () => import('@org/product').then((m) => m.ProductComponent),
-    providers: [
-      provideState(productFeature),
-      provideEffects({ loadProducts, loadProductsByCategory }),
-    ],
+    providers: [provideState(productFeature), provideEffects({ loadProducts })],
   },
   {
     path: 'product/:categoryName',
@@ -31,5 +29,10 @@ export const appRoutes: Route[] = [
       provideState(productFeature),
       provideEffects({ loadProducts, loadProductsByCategory }),
     ],
+  },
+  {
+    path: 'cart',
+    loadComponent: () => import('@org/cart').then((m) => m.CartComponent),
+    providers: [provideState(cartFeature), provideEffects({ loadCart })],
   },
 ];
