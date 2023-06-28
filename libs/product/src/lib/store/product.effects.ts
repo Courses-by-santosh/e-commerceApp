@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Product, productActions } from './product.action';
-import { exhaustMap, map, mergeMap } from 'rxjs';
+import { exhaustMap, map, mergeMap, catchError, of } from 'rxjs';
 import { ProductService } from '../product.service';
 
 export const loadProducts = createEffect(
@@ -10,8 +10,8 @@ export const loadProducts = createEffect(
       ofType(productActions.loadProduct),
       exhaustMap(() =>
         productService.getProducts().pipe(
-          map((products) => productActions.productSuccess({ products }))
-          //   catchError(() => of(productActions.productFailure('Error Occured')))
+          map((products) => productActions.productSuccess({ products })),
+          catchError((error) => of(productActions.productFailure({ error })))
         )
       )
     );
@@ -24,9 +24,9 @@ export const loadProductsByCategory = createEffect(
     return actions$.pipe(
       ofType(productActions.loadProductByCategory),
       exhaustMap((action) =>
-        productService.getProductByCategory('jewelery').pipe(
-          map((products) => productActions.productSuccess({ products }))
-          //   catchError(() => of(productActions.productFailure('Error Occured')))
+        productService.getProductByCategory(action.category).pipe(
+          map((products) => productActions.productSuccess({ products })),
+          catchError((error) => of(productActions.productFailure({ error })))
         )
       )
     );
