@@ -1,0 +1,56 @@
+<p>login works!</p>
+{{ search.value }}
+<input type="text" placeholder="search text" [formControl]="search" />
+
+{{ loginForm.value | json }}
+{{ loginForm.valid }} Valid
+<br />
+{{ loginForm.invalid }} Invalid
+<br />
+{{ loginForm.status }} Status
+<br />
+{{ loginForm.pristine }} Pristine
+<br />
+{{ loginForm.dirty }} Dirty
+<br />
+{{ loginForm.touched }} Touched
+<br />
+{{ loginForm.untouched }} Untouched
+
+<form class="example-form" [formGroup]="loginForm" (ngSubmit)="login()">
+  <mat-form-field class="example-full-width">
+    <input
+      type="text"
+      matInput
+      placeholder="username"
+      formControlName="username"
+    />
+    <mat-hint>Username is your email!</mat-hint>
+    <mat-error *ngIf="loginForm.hasError('email', 'username')">
+      The username should be a valid email address
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input
+      type="password"
+      matInput
+      placeholder="password"
+      formControlName="password"
+    />
+
+    <mat-error *ngIf="loginForm.hasError('minlength', 'password')">
+      The password should be at least 8 characters long
+    </mat-error>
+    <mat-error *ngIf="loginForm.hasError('maxlength', 'password')">
+      The password should be at most 16 characters long
+    </mat-error>
+  </mat-form-field>
+  <button
+    [disabled]="loginForm.invalid"
+    mat-raised-button
+    color="primary"
+    type="submit"
+  >
+    Login
+  </button>
+</form>
