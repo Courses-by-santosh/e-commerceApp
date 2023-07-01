@@ -7,12 +7,17 @@ import {
   loadProductsByCategory,
 } from '@org/product';
 import { loadCart, cartFeature } from '@org/cart';
+import { LoginComponent } from '@org/user';
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: 'product',
+    redirectTo: 'login',
     pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('@org/user').then((m) => m.LoginComponent),
   },
   {
     path: 'product',
