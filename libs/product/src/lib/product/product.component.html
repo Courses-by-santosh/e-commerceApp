@@ -4,22 +4,23 @@
 <!-- {{products$ | async | json}} -->
 
   <div class="row">
-    <div class="col-md-4" *ngFor="let product of products$ | async ">
+    <div class="col-md-6 col-lg-4 d-flex" *ngFor="let product of products$ | async ">
       <mat-card class="example-card">
+        <div class="example-card-image">
+          <img mat-card-image src="{{product.image}}" alt="Photo of a Shiba Inu">
+        </div>
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{product.title}}</mat-card-title>
           <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-md-image src="{{product.image}}" alt="Photo of a Shiba Inu">
-        <mat-card-content>
+        <mat-card-content class="flex-grow-1">
           <p>
             {{product.description}}
           </p>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary">Buy Now</button>
-          <button mat-raised-button color="accent">Add to Cart</button>
+        <mat-card-actions class="example-card-actions">
+          <button mat-raised-button color="primary" class="white-space-nowrap">Buy Now</button>
+          <button mat-raised-button color="accent" class="white-space-nowrap">Add to Cart</button>
         </mat-card-actions>
       </mat-card>
     </div>
