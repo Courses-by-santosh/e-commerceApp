@@ -19,6 +19,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   white-space: nowrap !important;
 }
 
+.word-break-all {
+  word-break: break-all !important;
+}
+
 .container-fluid {
   padding-left: .5rem;
   padding-right: .5rem;
