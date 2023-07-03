@@ -9,12 +9,12 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-       <a mat-list-item [routerLink]="['product']">All Products</a>
+      <a mat-list-item [routerLink]="['product']">All Products</a>
       <ng-container *ngFor="let cat of categories$ | async">
         <a mat-list-item [routerLink]="['product', cat]">{{ cat }}</a>
       </ng-container>
-       <a mat-list-item [routerLink]="['cart']">View Cart</a>
-        <a mat-list-item [routerLink]="['orders']">View Orders</a>
+      <a mat-list-item [routerLink]="['cart']">View Cart</a>
+      <a mat-list-item [routerLink]="['orders']">View Orders</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -29,6 +29,27 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>santosh-workspace</span>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="container-fluid">

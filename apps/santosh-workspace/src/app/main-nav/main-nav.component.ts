@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectCategories } from '@org/category';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'ecom-main-nav',
@@ -26,6 +27,7 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
     MatIconModule,
     RouterLink,
     RouterOutlet,
+    MatMenuModule,
   ],
 })
 export class MainNavComponent {

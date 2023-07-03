@@ -7,7 +7,7 @@ import {
   loadProductsByCategory,
 } from '@org/product';
 import { loadCart, cartFeature } from '@org/cart';
-import { LoginComponent } from '@org/user';
+import { authGuard } from '@org/user';
 
 export const appRoutes: Route[] = [
   {
@@ -23,6 +23,7 @@ export const appRoutes: Route[] = [
     path: 'product',
     loadComponent: () => import('@org/product').then((m) => m.ProductComponent),
     providers: [provideState(productFeature), provideEffects({ loadProducts })],
+    canMatch: [authGuard],
   },
   {
     path: 'product/:categoryName',
@@ -34,10 +35,12 @@ export const appRoutes: Route[] = [
       provideState(productFeature),
       provideEffects({ loadProducts, loadProductsByCategory }),
     ],
+    canMatch: [authGuard],
   },
   {
     path: 'cart',
     loadComponent: () => import('@org/cart').then((m) => m.CartComponent),
     providers: [provideState(cartFeature), provideEffects({ loadCart })],
+    canMatch: [authGuard],
   },
 ];
