@@ -43,4 +43,9 @@ export const appRoutes: Route[] = [
     providers: [provideState(cartFeature), provideEffects({ loadCart })],
     canMatch: [authGuard],
   },
+  {
+    path: 'profile',
+    loadComponent: () => import('@org/user').then((m) => m.ProfileComponent),
+    // canMatch: [authGuard],
+  }
 ];
