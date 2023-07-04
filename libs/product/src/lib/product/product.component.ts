@@ -17,14 +17,22 @@ import {
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
+  private _categoryName: string = '';
+
   @Input() set categoryName(name: string) {
-    if (name) {
+    this._categoryName = name ?? '';
+
+    if (this._categoryName) {
       this.store.dispatch(
-        productActions.loadProductByCategory({ category: name })
+        productActions.loadProductByCategory({ category: this._categoryName })
       );
     } else {
       this.store.dispatch(productActions.loadProduct());
     }
+  }
+
+  get categoryName(): string {
+    return this._categoryName;
   }
 
   @Input() animation: any;
