@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/home": ["libs/home/src/index.ts"]
+      "@org/home": ["libs/home/src/index.ts"],
+      "@org/orders": ["libs/orders/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
