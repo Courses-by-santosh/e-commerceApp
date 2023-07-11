@@ -47,5 +47,9 @@ export const appRoutes: Route[] = [
     path: 'profile',
     loadComponent: () => import('@org/user').then((m) => m.ProfileComponent),
     // canMatch: [authGuard],
-  }
+  },
+  {
+    path: 'orders',
+    loadComponent: () => import('@org/orders').then((m) => m.OrdersComponent),
+  },
 ];
