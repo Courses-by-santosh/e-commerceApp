@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on, createFeature, createSelector } from '@ngrx/store';
 import { Product, productActions } from './product.action';
 
 export interface ProductState {
@@ -28,3 +28,19 @@ export const productReducer = createReducer(
     error: action.error,
   }))
 );
+
+const productFeatureKey = 'product';
+
+export const productFeature = createFeature({
+  name: productFeatureKey,
+  reducer: productReducer,
+  extraSelectors: ({ selectProducts, selectProductCount, selectError }) => ({
+    selectProducts,
+    selectProductCount,
+    selectError,
+    filterProductsByCategory: (category: string) =>
+      createSelector(selectProducts, (products) =>
+        products.filter((product) => product.category === category)
+      ),
+  }),
+});

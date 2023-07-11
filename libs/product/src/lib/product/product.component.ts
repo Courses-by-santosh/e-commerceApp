@@ -6,9 +6,8 @@ import { Store, provideState } from '@ngrx/store';
 import { productActions } from '../store/product.action';
 
 import {
-  selectProducts,
-  selectProductsByCategory,
-} from '../store/product.selector';
+productFeature
+} from '../store/product.state';
 @Component({
   selector: 'org-product',
   standalone: true,
@@ -37,7 +36,7 @@ export class ProductComponent implements OnInit {
 
   @Input() animation: any;
 
-  products$ = this.store.select(selectProducts);
+  products$ = this.store.select(productFeature.selectProducts);
 
   constructor(private readonly store: Store) {}
 

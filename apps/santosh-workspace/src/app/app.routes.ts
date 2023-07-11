@@ -6,7 +6,7 @@ import {
   loadProducts,
   loadProductsByCategory,
 } from '@org/product';
-import { loadCart, cartFeature } from '@org/cart';
+import { loadCart, cartFeature, loadCartbyId } from '@org/cart';
 import { authGuard } from '@org/user';
 
 export const appRoutes: Route[] = [
@@ -40,8 +40,11 @@ export const appRoutes: Route[] = [
   {
     path: 'cart',
     loadComponent: () => import('@org/cart').then((m) => m.CartComponent),
-    providers: [provideState(cartFeature), provideEffects({ loadCart })],
-    canMatch: [authGuard],
+    providers: [
+      provideState(cartFeature),
+      provideEffects({ loadCart, loadCartbyId }),
+    ],
+    // canMatch: [authGuard],
   },
   {
     path: 'profile',

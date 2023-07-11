@@ -15,6 +15,11 @@ export const selectCart = createSelector(
   (state) => state.cart
 );
 
+export const selectCurrentCart  = createSelector(
+  selectProductState,
+  (state) => state.currentCart
+);
+
 export const cartFeature = createFeature({
   name: cartFeatureKey,
   reducer: cartReducer,
