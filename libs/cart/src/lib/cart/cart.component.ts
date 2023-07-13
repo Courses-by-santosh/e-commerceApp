@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { cartActions } from '../store/cart.action';
-import { selectCart, selectCurrentCart } from '../store/cart.selector';
+import { selectCart, selectCurrentCart, userCartSelector } from '../store/cart.selector';
 
 @Component({
   selector: 'org-lib-cart',
@@ -12,7 +12,7 @@ import { selectCart, selectCurrentCart } from '../store/cart.selector';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cart$ = this.store.select(selectCurrentCart);
+  cart$ = this.store.select(userCartSelector);
 
   constructor(private readonly store: Store) {}
 

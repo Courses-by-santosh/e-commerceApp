@@ -1,9 +1,11 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { User } from '@org/user';
 
 export interface Cart {
   id: number;
   userId: number;
   date: Date;
+  user?: User;
   products: [
     {
       productId: number;

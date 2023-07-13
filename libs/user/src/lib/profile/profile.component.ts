@@ -14,6 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { User } from '../store/user.interface';
+import { Store } from '@ngrx/store';
+import { userFeature } from '../store/user.state';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'org-profile',
@@ -39,11 +42,17 @@ export class ProfileComponent {
 
   profileForm!: FormGroup;
 
+  profile$ = this.store.select(userFeature.selectUser);
+
   get addresses() {
     return this.profileForm.get('address') as FormArray;
   }
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(
+    private userService: UserService,
+    private fb: FormBuilder,
+    private readonly store: Store
+  ) {}
 
   ngOnInit() {
     this.profileForm = this.fb.group({
@@ -96,8 +105,8 @@ export class ProfileComponent {
   }
 
   loadProfile() {
-    this.userService.getUser().subscribe((user) => {
-      this.profileForm.patchValue(user);
+    this.profile$.pipe(filter((user) => !!user)).subscribe((user) => {
+      this.profileForm.patchValue(user || {});
     });
   }
 

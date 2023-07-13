@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../store/login.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { userActions } from '../store/user.action';
 
 // interface LoginInfo {
 //   username: string;
@@ -45,7 +47,11 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private store: Store
+  ) {}
 
   login() {
     this.loginService
@@ -54,8 +60,8 @@ export class LoginComponent {
         this.loginForm.value.password as string
       )
       .subscribe((token) => {
-        console.log(token);
         this.loginService.isLoggedIn = true;
+        this.store.dispatch(userActions.loadUserProfile({ id: 2 }));
         this.router.navigate(['/product']);
       });
   }
