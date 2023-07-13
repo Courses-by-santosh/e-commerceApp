@@ -1,4 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { Product } from '@org/product';
 import { User } from '@org/user';
 
 export interface Cart {
@@ -12,6 +13,7 @@ export interface Cart {
       quantity: number;
     }
   ];
+  ProductDetails: Product[]
 }
 
 export const cartActions = createActionGroup({
@@ -23,5 +25,6 @@ export const cartActions = createActionGroup({
     loadCartById : props<{id:number}>(),
     cartByIdSuccess : props<{cart:Cart}>(),
     cartByIdFailure : props<{error:string}>(),
+    addProductToCart : props<{product:Product}>(),
   },
 });

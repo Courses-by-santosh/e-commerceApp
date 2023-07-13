@@ -10,5 +10,8 @@
     Address: {{ cart?.user?.address?.street }} {{ cart?.user?.address?.city }}
   </div>
 
+  Products: 
+
+  <org-product-list [products]="cart.ProductDetails" (deleteProduct)="delete($event)"/>
   
 </ng-container>

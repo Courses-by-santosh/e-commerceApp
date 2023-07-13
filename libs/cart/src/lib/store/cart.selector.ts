@@ -5,6 +5,7 @@ import {
 } from '@ngrx/store';
 import { CartState, cartReducer } from './cart.reducer';
 import { userFeature } from '@org/user';
+import { productFeature } from '@org/product';
 
 const cartFeatureKey = 'cart';
 
@@ -28,13 +29,21 @@ export const cartFeature = createFeature({
 export const userCartSelector = createSelector(
   selectCurrentCart,
   userFeature.selectUser,
-  (cart, user) => {
+  productFeature.selectProducts,
+  (cart, user, products) => {
+
     if (cart && user) {
+      const cartproduct = products.filter(
+        (product) => product.id === cart.products[0].productId
+      );
       return {
         ...cart,
         user,
+        ProductDetails : cartproduct,
       };
     }
     return undefined
   }
 );
+
+

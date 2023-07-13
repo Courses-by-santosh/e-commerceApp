@@ -8,6 +8,7 @@ import { productActions } from '../store/product.action';
 import {
 productFeature
 } from '../store/product.state';
+import { Product } from '../store/product';
 @Component({
   selector: 'org-product',
   standalone: true,
@@ -42,6 +43,10 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     // this.store.dispatch(productActions.loadProduct());
+  }
+
+  addToCart(product: Product) {
+    // this.store.dispatch(productActions.addToCart({ product }));
   }
 }
 
