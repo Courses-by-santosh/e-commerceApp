@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../store/login.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { userActions } from '../store/user.action';
+import { cartActions, userActions } from '@org/common/store';
 
 // interface LoginInfo {
 //   username: string;
@@ -62,6 +62,7 @@ export class LoginComponent {
       .subscribe((token) => {
         this.loginService.isLoggedIn = true;
         this.store.dispatch(userActions.loadUserProfile({ id: 2 }));
+         this.store.dispatch(cartActions.loadCartById({ id: 3 }));
         this.router.navigate(['/product']);
       });
   }

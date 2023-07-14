@@ -15,7 +15,7 @@ import {
   categoryFeature,
 } from '@org/category';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { loadUserProfile, userFeature } from '@org/user';
+import { loadUserProfile, userFeature } from '@org/common/store';
 
 export const appConfig: ApplicationConfig = {
   providers: [

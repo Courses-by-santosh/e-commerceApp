@@ -7,18 +7,13 @@ export interface CartState {
   error: string;
 }
 
-export const initialState: CartState = {
+const initialState: CartState = {
   cart: [],
   currentCart: {
     id: 0,
     userId: 0,
     date: new Date(),
-    products: [
-      {
-        productId: 0,
-        quantity: 0,
-      },
-    ],
+    products: [],
     ProductDetails: [],
   },
   error: '',
@@ -53,10 +48,13 @@ export const cartReducer = createReducer(
     error: '',
     currentCart: {
       ...state.currentCart,
-      ProductDetails: [
-        ...state?.currentCart.ProductDetails,
-        action.product
+      products: [
+        ...state.currentCart.products,
+        {
+          productId: action.product.id,
+          quantity: 1,
+        },
       ],
-    }
+    },
   }))
 );

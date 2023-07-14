@@ -1,6 +1,5 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../store/user.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   FormArray,
@@ -13,9 +12,8 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { User } from '../store/user.interface';
 import { Store } from '@ngrx/store';
-import { userFeature } from '../store/user.state';
+import { userFeature, UserService } from '@org/common/store';
 import { filter } from 'rxjs';
 
 @Component({

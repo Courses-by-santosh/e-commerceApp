@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Store, provideState } from '@ngrx/store';
-import { productActions } from '../store/product.action';
-
 import {
-productFeature
-} from '../store/product.state';
-import { Product } from '../store/product';
+  productActions,
+  cartActions,
+  productFeature,
+  Product,
+} from '@org/common/store';
+
 @Component({
   selector: 'org-product',
   standalone: true,
@@ -46,7 +47,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    // this.store.dispatch(productActions.addToCart({ product }));
+    this.store.dispatch(cartActions.addProductToCart({ product }));
   }
 }
 

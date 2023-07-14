@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Product } from '@org/product';
+import { Product } from '@org/common/store';
 import { MatTableModule } from '@angular/material/table';
 
 import { MatIconModule } from '@angular/material/icon';

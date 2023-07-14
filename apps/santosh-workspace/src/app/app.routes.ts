@@ -5,8 +5,10 @@ import {
   productFeature,
   loadProducts,
   loadProductsByCategory,
-} from '@org/product';
-import { loadCart, cartFeature, loadCartbyId } from '@org/cart';
+  loadCart,
+  cartFeature,
+  loadCartbyId,
+} from '@org/common/store';
 import { authGuard } from '@org/user';
 
 export const appRoutes: Route[] = [
@@ -22,7 +24,8 @@ export const appRoutes: Route[] = [
   {
     path: 'product',
     loadComponent: () => import('@org/product').then((m) => m.ProductComponent),
-    providers: [provideState(productFeature), provideEffects({ loadProducts })],
+    providers: [provideState(productFeature),
+      provideState(cartFeature), provideEffects({ loadProducts })],
     canMatch: [authGuard],
   },
   {
@@ -41,7 +44,6 @@ export const appRoutes: Route[] = [
     path: 'cart',
     loadComponent: () => import('@org/cart').then((m) => m.CartComponent),
     providers: [
-      provideState(cartFeature),
       provideEffects({ loadCart, loadCartbyId }),
     ],
     // canMatch: [authGuard],

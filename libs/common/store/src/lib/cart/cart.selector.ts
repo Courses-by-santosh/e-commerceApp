@@ -4,8 +4,8 @@ import {
   createSelector,
 } from '@ngrx/store';
 import { CartState, cartReducer } from './cart.reducer';
-import { userFeature } from '@org/user';
-import { productFeature } from '@org/product';
+import { userFeature } from '../user/user.state';
+import { productFeature } from '../product/product.state';
 
 const cartFeatureKey = 'cart';
 
@@ -31,19 +31,21 @@ export const userCartSelector = createSelector(
   userFeature.selectUser,
   productFeature.selectProducts,
   (cart, user, products) => {
-
     if (cart && user) {
-      const cartproduct = products.filter(
-        (product) => product.id === cart.products[0].productId
-      );
+      const cartproduct = cart.products
+        .map((product) => {
+          const cartproduct = products.filter(
+            (p) => p.id === product.productId
+          );
+          return cartproduct;
+        }).flat();
+
       return {
         ...cart,
         user,
-        ProductDetails : cartproduct,
+        ProductDetails: cartproduct,
       };
     }
-    return undefined
+    return undefined;
   }
 );
-
-

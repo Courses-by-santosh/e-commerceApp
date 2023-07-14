@@ -6,12 +6,12 @@ export interface UserState {
   error: string;
 }
 
-export const initialState: UserState = {
+const initialState: UserState = {
   user: undefined,
   error: '',
 };
 
-export const productReducer = createReducer(
+export const userReducer = createReducer(
   initialState,
   on(userActions.loadUserProfileSuccess, (state, action) => ({
     ...state,
@@ -28,7 +28,7 @@ export const productReducer = createReducer(
 
 export const userFeature = createFeature({
   name: 'user',
-  reducer: productReducer,
+  reducer: userReducer,
   extraSelectors: ({ selectUser, selectError }) => ({
     selectUser,
     selectError,

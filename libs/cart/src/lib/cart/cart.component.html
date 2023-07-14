@@ -1,6 +1,6 @@
-<p>lib-cart works!</p>
+<!-- <p>lib-cart works!</p>
 
-{{ cart$ | async | json }}
+{{ cart$ | async | json }} -->
 
 <ng-container *ngIf="cart$ | async as cart">
   <div>Name: {{ cart?.user?.name?.firstname }} {{ cart?.user?.name?.lastname }}</div>
