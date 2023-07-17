@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { cartActions, Cart } from './cart.action';
+import { identifierName } from '@angular/compiler';
 
 export interface CartState {
   cart: Cart[];
@@ -42,19 +43,41 @@ export const cartReducer = createReducer(
     currentCart: initialState.currentCart,
     error: action.error,
   })),
-  on(cartActions.addProductToCart, (state, action) => ({
-    ...state,
-    cart: [...state.cart],
-    error: '',
-    currentCart: {
-      ...state.currentCart,
-      products: [
+  on(cartActions.addProductToCart, (state, action) => {
+    let product = [];
+    let newProduct = [];
+    if (
+      state.currentCart.products.filter(
+        (p) => p.productId === action.product.id
+      ).length > 0
+    ) {
+      product = state.currentCart.products.map((p) => {
+        if (p.productId === action.product.id) {
+          return {
+            ...p,
+            quantity: p.quantity + 1,
+          };
+        }
+        return p;
+      });
+    } else {
+      product = [
         ...state.currentCart.products,
         {
           productId: action.product.id,
           quantity: 1,
         },
-      ],
-    },
-  }))
+      ];
+    }
+
+    return {
+      ...state,
+      cart: [...state.cart],
+      error: '',
+      currentCart: {
+        ...state.currentCart,
+        products: product,
+      },
+    };
+  })
 );

@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '@org/common/store';
 import { MatTableModule } from '@angular/material/table';
@@ -13,7 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent {
-  columnsToDisplay = ['title', 'price', 'category', 'actions'];
+  columnsToDisplay = ['title', 'price', 'quantity', 'category', 'actions','total_price'];
   @Input() products: Product[] = [];
 
   @Output() deleteProduct = new EventEmitter<Product>();

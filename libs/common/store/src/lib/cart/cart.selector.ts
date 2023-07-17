@@ -6,6 +6,7 @@ import {
 import { CartState, cartReducer } from './cart.reducer';
 import { userFeature } from '../user/user.state';
 import { productFeature } from '../product/product.state';
+import { Product } from '../product/product';
 
 const cartFeatureKey = 'cart';
 
@@ -32,14 +33,25 @@ export const userCartSelector = createSelector(
   productFeature.selectProducts,
   (cart, user, products) => {
     if (cart && user) {
+      let newProduct: Product[] = [];
       const cartproduct = cart.products
-        .map((product) => {
-          const cartproduct = products.filter(
-            (p) => p.id === product.productId
+        .map((p) => {
+          const product = products.find(
+            (product) => product.id === p.productId
           );
-          return cartproduct;
-        }).flat();
-
+          if (product) {
+            const productWithQuantity: Product = {
+              ...product,
+              quantity: p.quantity,
+            };
+            newProduct = [productWithQuantity ];
+            return newProduct;
+          }
+          else {
+            return [];
+          }
+        })
+        .flat();
       return {
         ...cart,
         user,

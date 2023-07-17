@@ -2,7 +2,7 @@ import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Product } from '../product/product';
 import { User } from '../user/user.interface';
 
-interface CartProduct {
+export interface CartProduct {
   productId: number;
   quantity: number;
 }
