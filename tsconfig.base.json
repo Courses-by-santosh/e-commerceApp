@@ -17,6 +17,7 @@
     "paths": {
       "@org/cart": ["libs/cart/src/index.ts"],
       "@org/category": ["libs/category/src/index.ts"],
+      "@org/checkout": ["libs/checkout/src/index.ts"],
       "@org/common/store": ["libs/common/store/src/index.ts"],
       "@org/home": ["libs/home/src/index.ts"],
       "@org/orders": ["libs/orders/src/index.ts"],

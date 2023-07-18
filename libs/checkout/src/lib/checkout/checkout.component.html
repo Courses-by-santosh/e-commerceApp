@@ -1,0 +1,44 @@
+<p>checkout works!</p>
+
+<ng-container *ngIf="cart$ | async as cart">
+  <div>
+    Name: {{ cart?.user?.name?.firstname }} {{ cart?.user?.name?.lastname }}
+  </div>
+  <div>Email: {{ cart?.user?.email }}</div>
+  <div>Phone: {{ cart?.user?.phone }}</div>
+  <div>
+    Address: {{ cart?.user?.address?.street }} {{ cart?.user?.address?.city }}
+  </div>
+
+  <div *ngIf="cart.ProductDetails.length > 0">
+    Amount: {{ cart?.ProductDetails | totalAmount | number: '1.2-2' | currency: 'INR' }}
+  </div>
+  <form class="example-form" [formGroup]="checkoutForm">
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      placeholder="Credit Card Number"
+      formControlName="creditcardnumber"
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      placeholder="Expiry"
+      formControlName="creditcardexpiration"
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="CVV" formControlName="creditcardcvv" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Name on Card" formControlName="nameoncard" />
+  </mat-form-field>
+
+    <button [disabled]="checkoutForm.invalid" mat-raised-button color="primary" (click)="placeOrder()">
+        Pay and Place Order
+    </button>
+</form>
+
+</ng-container>
+

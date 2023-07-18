@@ -57,4 +57,8 @@ export const appRoutes: Route[] = [
     path: 'orders',
     loadComponent: () => import('@org/orders').then((m) => m.OrdersComponent),
   },
+  {
+    path: 'checkout',
+    loadComponent: () => import('@org/checkout').then((m) => m.CheckoutComponent),
+  }
 ];
