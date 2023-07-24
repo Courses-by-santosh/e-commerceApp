@@ -15,3 +15,6 @@ export * from './lib/user/user.state';
 export * from './lib/user/user.service';
 export * from './lib/user/user.interface';
 
+export * from './lib/orders/order.state';
+export * from './lib/orders/order.interface';
+export * from './lib/orders/order.action';

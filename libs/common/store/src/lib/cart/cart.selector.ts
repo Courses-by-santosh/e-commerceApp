@@ -19,7 +19,7 @@ export const selectCart = createSelector(
 
 export const selectCurrentCart = createSelector(
   selectCartState,
-  (state) => state.currentCart
+  (state) => state?.currentCart
 );
 
 export const cartFeature = createFeature({

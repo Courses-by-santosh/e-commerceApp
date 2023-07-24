@@ -1,2 +1,17 @@
 <p>orders works!</p>
-<org-orders-list [category]="'Test'"></org-orders-list>
+{{ status() }}
+
+<button (click)="delivered()">Delivered</button>
+<button (click)="shipped()">Shipped</button>
+
+<button (click)="returned()">Returned</button>
+
+{{count() }}
+
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">Decrement</button>
+
+<org-orders-list [category]="'Test'" [isCategory]="1" ></org-orders-list>
+
+<org-state></org-state>
+{{ orders() | json }}

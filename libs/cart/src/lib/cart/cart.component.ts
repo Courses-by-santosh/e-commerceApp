@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { userCartSelector, Product } from '@org/common/store';
+import { userCartSelector, Product, orderAction } from '@org/common/store';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
+ 
     this.router.navigate(['/checkout']);
   }
 }

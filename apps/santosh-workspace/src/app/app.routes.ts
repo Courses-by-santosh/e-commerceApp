@@ -8,6 +8,7 @@ import {
   loadCart,
   cartFeature,
   loadCartbyId,
+  orderFeature,
 } from '@org/common/store';
 import { authGuard } from '@org/user';
 
@@ -24,8 +25,11 @@ export const appRoutes: Route[] = [
   {
     path: 'product',
     loadComponent: () => import('@org/product').then((m) => m.ProductComponent),
-    providers: [provideState(productFeature),
-      provideState(cartFeature), provideEffects({ loadProducts })],
+    providers: [
+      provideState(productFeature),
+      provideState(cartFeature),
+      provideEffects({ loadProducts }),
+    ],
     canMatch: [authGuard],
   },
   {
@@ -43,9 +47,7 @@ export const appRoutes: Route[] = [
   {
     path: 'cart',
     loadComponent: () => import('@org/cart').then((m) => m.CartComponent),
-    providers: [
-      provideEffects({ loadCart, loadCartbyId }),
-    ],
+    providers: [provideEffects({ loadCart, loadCartbyId })],
     // canMatch: [authGuard],
   },
   {
@@ -59,6 +61,8 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'checkout',
-    loadComponent: () => import('@org/checkout').then((m) => m.CheckoutComponent),
-  }
+    loadComponent: () =>
+      import('@org/checkout').then((m) => m.CheckoutComponent),
+    providers: [provideState(orderFeature)],
+  },
 ];
