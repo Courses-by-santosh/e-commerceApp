@@ -16,6 +16,7 @@ import {
 } from '@org/category';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { loadUserProfile, userFeature } from '@org/common/store';
+import { provideAuth0 } from '@auth0/auth0-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,13 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(),
     provideAnimations(),
+    provideAuth0({
+      domain: 'joatu.auth0.com',
+      clientId: '9eK0Z2uH5VhRuVL3ewQmMkurNL70ykq4',
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
     provideStore(),
     provideState(categoryFeature),
     provideState(userFeature),

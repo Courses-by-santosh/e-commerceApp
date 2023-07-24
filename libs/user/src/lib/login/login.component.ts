@@ -13,6 +13,7 @@ import { LoginService } from '../store/login.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { cartActions, userActions } from '@org/common/store';
+import { AuthService } from '@auth0/auth0-angular';
 
 // interface LoginInfo {
 //   username: string;
@@ -50,7 +51,8 @@ export class LoginComponent {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private store: Store
+    private store: Store,
+    public auth: AuthService
   ) {}
 
   login() {

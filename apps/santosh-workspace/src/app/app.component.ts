@@ -7,7 +7,6 @@ import { CommonModule, AsyncPipe, JsonPipe } from '@angular/common';
 import { CategoryService, getCategoriesActions, selectCategories, selectError } from '@org/category';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
 @Component({
   standalone: true,
   imports: [
@@ -27,7 +26,7 @@ export class AppComponent implements OnInit {
   
   // categories= this.categoryService.getCategories();
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store,) {}
 
   ngOnInit() {
     this.store.dispatch(getCategoriesActions());

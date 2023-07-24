@@ -1,5 +1,10 @@
 <p>profile works!</p>
 
+<ul *ngIf="auth.user$ | async as user">
+  <li>{{ user.name }}</li>
+  <li>{{ user.email }}</li>
+</ul>
+
 <!-- <pre
   >{{ user() | json }}
 
@@ -14,11 +19,15 @@
 <br />
 {{ profileForm.value | json }}
 
-<form class="example-form" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
-<mat-form-field class="example-full-width">
+<form
+  class="example-form"
+  [formGroup]="profileForm"
+  (ngSubmit)="updateProfile()"
+>
+  <mat-form-field class="example-full-width">
     <mat-label>Username</mat-label>
     <input matInput placeholder="Id" formControlName="id" />
-    </mat-form-field>
+  </mat-form-field>
   <div formGroupName="name">
     <mat-form-field class="example-full-width">
       <mat-label>First Name</mat-label>

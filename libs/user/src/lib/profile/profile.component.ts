@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { userFeature, UserService } from '@org/common/store';
 import { filter } from 'rxjs';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'org-profile',
@@ -49,7 +50,8 @@ export class ProfileComponent {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private readonly store: Store
+    private readonly store: Store,
+    public auth: AuthService
   ) {}
 
   ngOnInit() {

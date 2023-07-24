@@ -15,6 +15,7 @@
     "@angular/platform-browser": "16.1.5",
     "@angular/platform-browser-dynamic": "16.1.5",
     "@angular/router": "16.1.5",
+    "@auth0/auth0-angular": "^2.2.1",
     "@ngrx/component-store": "^16.1.0",
     "@ngrx/effects": "^16.0.1",
     "@ngrx/store": "^16.0.1",
