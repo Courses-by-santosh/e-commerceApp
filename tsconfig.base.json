@@ -19,6 +19,7 @@
       "@org/category": ["libs/category/src/index.ts"],
       "@org/checkout": ["libs/checkout/src/index.ts"],
       "@org/common/store": ["libs/common/store/src/index.ts"],
+      "@org/hiya-store/product": ["apps/hiya-store/product/src/index.ts"],
       "@org/home": ["libs/home/src/index.ts"],
       "@org/orders": ["libs/orders/src/index.ts"],
       "@org/product": ["libs/product/src/index.ts"],

@@ -1,0 +1,50 @@
+{
+  "name": "hiya-store-product",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hiya-store/product/src",
+  "prefix": "org",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "apps/hiya-store/product/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "apps/hiya-store/product/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "apps/hiya-store/product/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hiya-store/product/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/hiya-store/product/**/*.ts",
+          "apps/hiya-store/product/**/*.html"
+        ]
+      }
+    }
+  }
+}
