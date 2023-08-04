@@ -1,7 +1,7 @@
 {
-  "name": "common-store",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/common/store/src",
+  "name": "app-write",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/app-write/src",
   "prefix": "org",
   "tags": [],
   "projectType": "library",
@@ -10,14 +10,14 @@
       "executor": "@nx/angular:ng-packagr-lite",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/common/store/ng-package.json",
+        "project": "libs/app-write/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/common/store/tsconfig.lib.prod.json"
+          "tsConfig": "libs/app-write/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "libs/common/store/tsconfig.lib.json"
+          "tsConfig": "libs/app-write/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
@@ -26,7 +26,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/common/store/jest.config.ts",
+        "jestConfig": "libs/app-write/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -41,8 +41,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/common/store/**/*.ts",
-          "libs/common/store/**/*.html"
+          "libs/app-write/**/*.ts",
+          "libs/app-write/**/*.html"
         ]
       }
     }

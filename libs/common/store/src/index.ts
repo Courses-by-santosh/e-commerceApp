@@ -8,6 +8,7 @@ export * from './lib/product/product.action';
 export * from './lib/product/product.effects';
 export * from './lib/product/product.state';
 export * from './lib/product/product';
+export * from './lib/product/product.service';
 
 export * from './lib/user/user.action';
 export * from './lib/user/user.effects';

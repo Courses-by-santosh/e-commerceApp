@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@org/app-write": ["libs/app-write/src/index.ts"],
       "@org/cart": ["libs/cart/src/index.ts"],
       "@org/category": ["libs/category/src/index.ts"],
       "@org/checkout": ["libs/checkout/src/index.ts"],

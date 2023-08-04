@@ -13,7 +13,7 @@ export interface ProductActions {
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService extends RxState<Product> {
+export class ProductRxService extends RxState<Product> {
   // actionsFactory = new RxActionFactory<ProductActions>();
   // actions = this.actionsFactory.create();
 

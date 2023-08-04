@@ -22,6 +22,8 @@
     "@ngrx/store-devtools": "^16.0.1",
     "@nx/angular": "16.5.3",
     "@rx-angular/state": "^16.0.0",
+    "appwrite": "^11.0.0",
+    "ng-zorro-antd": "^16.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
